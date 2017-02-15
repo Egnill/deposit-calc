@@ -17,7 +17,7 @@ int main()
 			}
 		if (day <= 241 && day <= 365) {
 			}
-	} else {
+	} /*else {
 		if (vklad >= 100) {
 			if (day <= 0 && day <= 30) {
 				}
@@ -28,7 +28,7 @@ int main()
 			if (day <= 241 && day <= 365) {
 				}
 		}
-	}
+	}*/
 	
 	return 0;
 }
