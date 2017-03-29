@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "dc.h"
+#include "deposit.h"
 
 int corect(float vklad, int day)
 {
