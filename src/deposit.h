@@ -1,5 +1,5 @@
-#ifndef DEPOSIT_H
-#define DEPOSIT_H
+#ifndef H_DEPOSIT
+#define H_DEPOSIT
 
 void prover(float vklad, int day);
 int corect(float vklad, int day);

@@ -1,3 +1,5 @@
+/bin/*deposit-calc
+/build/*.o
 *.o
 *.bin
 *.pdf
