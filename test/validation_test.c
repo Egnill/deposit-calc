@@ -15,7 +15,7 @@ CTEST(logic_suite, corect_wrong)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(logic_suite, corect_wrong)
+CTEST(logic_suite, corect_wrong_1)
 {
 	//Given
 	const int vklad_test = 5;
@@ -29,7 +29,7 @@ CTEST(logic_suite, corect_wrong)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(logic_suite, corect_wrong)
+CTEST(logic_suite, corect_wrong_2)
 {
 	//Given
 	const int vklad_test = 10000;
@@ -43,7 +43,7 @@ CTEST(logic_suite, corect_wrong)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(logic_suite, corect_wrong)
+CTEST(logic_suite, corect_wrong_3)
 {
 	//Given
 	const int vklad_test = 10000;
@@ -57,7 +57,7 @@ CTEST(logic_suite, corect_wrong)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(logic_suite, corect_wrong)
+CTEST(logic_suite, corect_wrong_4)
 {
 	//Given
 	const int vklad_test = -9000;

@@ -4,7 +4,7 @@
 int main()
 {
 	int day;
-	float vklad, rez;
+	int vklad, rez;
 	
 	printf("Введите сумму вклада(в т.р): ");
 	if (scanf("%f", &vklad) != 1) {
@@ -20,7 +20,7 @@ int main()
 	int i = corect(vklad, day);
 	if (i == 0) {
 		rez = prover(vklad, day);
-		printf("Размер вклада на конец срока(в т. р.): %.2f\n", rez);
+		printf("Размер вклада на конец срока(в т. р.): %d\n", rez);
 	} else {
 		printf("Вклад или срок указаны неверно!\n");
 	}
