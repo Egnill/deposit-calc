@@ -3,7 +3,7 @@
 
 int corect(float vklad, int day)
 {
-	if (vklad < 10 || (day < 0 || day > 365)) {
+	if (vklad < 10000 || (day < 0 || day > 365)) {
 		return 1;
 	} else {
 		return 0;
