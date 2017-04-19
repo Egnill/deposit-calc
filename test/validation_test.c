@@ -18,7 +18,7 @@ CTEST(logic_suite, corect_wrong)
 CTEST(logic_suite, corect_wrong_1)
 {
 	//Given
-	const int vklad_test = 5;
+	const int vklad_test = 5000;
     const int day_test = 5;
 
     // When

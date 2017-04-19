@@ -6,8 +6,8 @@ int main()
 	int day;
 	int vklad, rez;
 	
-	printf("Введите сумму вклада(в т.р): ");
-	if (scanf("%f", &vklad) != 1) {
+	printf("Введите сумму вклада: ");
+	if (scanf("%d", &vklad) != 1) {
 		printf("Неверная форма ввода вклада!\n");
 		return 1;
 	}

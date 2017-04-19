@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "deposit.h"
 
-int corect(float vklad, int day)
+int corect(int vklad, int day)
 {
 	if (vklad < 10000 || (day < 0 || day > 365)) {
 		return 1;
@@ -13,7 +13,7 @@ int corect(float vklad, int day)
 int prover(int vklad, int day)
 {
 	int rez;
-	int i = 0;
+	//int i = 0;
 	if (vklad <= 100000) {
 		if (day >= 0 && day <= 30) {
 			rez = vklad * 0.9;
@@ -40,41 +40,37 @@ int prover(int vklad, int day)
 			return rez;
 		}
 	} else {
-		i = 1;
+		if (vklad > 100000) {
+			if (day >= 0 && day <= 30) {
+				rez = vklad * 0.9;
+				return rez;
+			}
+			if (day >= 31 && day <= 79) {
+				rez = vklad * 1.03;
+				return rez;
+			}
+			if (day >= 80 && day <= 100) {
+				rez = vklad * 1.5;
+				return rez;
+			}
+			if (day >= 101 && day <= 120) {
+				rez = vklad * 1.03;
+				return rez;
+			}
+			if (day >= 121 && day <= 240) {
+				rez = vklad * 1.08;
+				return rez;
+			}	
+			if (day >= 241 && day <= 365) {
+				rez = vklad * 1.15;
+				return rez;
+			}
+		} /*else {
+		 	return 1;
+		}*/
 	}
-	
-	if (vklad > 100000) {
-		if (day >= 0 && day <= 30) {
-			rez = vklad * 0.9;
-			return rez;
-		}
-		if (day >= 31 && day <= 79) {
-			rez = vklad * 1.03;
-			return rez;
-		}
-		if (day >= 80 && day <= 100) {
-			rez = vklad * 1.5;
-			return rez;
-		}
-		if (day >= 101 && day <= 120) {
-			rez = vklad * 1.03;
-			return rez;
-		}
-		if (day >= 121 && day <= 240) {
-			rez = vklad * 1.08;
-			return rez;
-		}
-		if (day >= 241 && day <= 365) {
-			rez = vklad * 1.15;
-			return rez;
-		}
-	} else {
-		i = 1;
-	}
-
-	if (i == 1) {
+	return 0;
+	/*if (i == 1) {
 		return 0;
-	} else {
-		return 1;
-	}
+	}*/
 }

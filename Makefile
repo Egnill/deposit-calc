@@ -1,42 +1,35 @@
-PREFIX = src/
-PREFIX1 = build/src/
-PREFIX2 = build/test/
-PREFIX3 = test/
-CC = gcc -Wall -Werror
-CC1 = gcc -I thirdparty -I src
-CC2 = gcc -I thirdparty 
+CC := gcc
+CFLAGS := -c -Wall -Werror
+LFLAGS := -I thirdparty -I src -c 
+EXE := bin/deposit-calc
+EXE_TEST := bin/deposit-calc-test
 
-#all: myprog mytest
-prog: myprog
+all: $(EXE) $(EXE_TEST)
 
-myprog: $(PREFIX1)main.o $(PREFIX1)deposit.o
-	gcc $(PREFIX1)main.o $(PREFIX1)deposit.o -o bin/deposit-calc
+$(EXE): build/src/main.o build/src/deposit.o
+		$(CC) build/src/main.o build/src/deposit.o -o $@
 
-$(PREFIX1)main.o: $(PREFIX)main.c
-	$(CC) -c $(PREFIX)main.c -o $(PREFIX1)main.o
+build/src/main.o: src/main.c src/deposit.h
+		$(CC) $(CFLAGS) src/main.c -o $@   
 
-$(PREFIX1)deposit.o: $(PREFIX)deposit.c
-	$(CC) -c $(PREFIX)deposit.c -o $(PREFIX1)deposit.o
+build/src/deposit.o: src/deposit.c 
+		$(CC) $(CFLAGS) src/deposit.c -o $@ 
 
-test: mytest
+$(EXE_TEST): build/test/deposit_test.o build/test/validation_test.o build/test/main.o build/src/deposit.o
+		$(CC) build/test/deposit_test.o build/test/validation_test.o build/test/main.o build/src/deposit.o -o $@
 
-mytest: $(PREFIX2)main.o $(PREFIX2)deposit_test.o $(PREFIX2)validation_test.o $(PREFIX1)deposit.o
-	gcc $(PREFIX2)main.o $(PREFIX2)deposit_test.o $(PREFIX2)validation_test.o $(PREFIX1)deposit.o -o bin/deposit_test
+build/test/deposit_test.o: test/deposit_test.c       
+		$(CC) $(LFLAGS) test/deposit_test.c -o $@   
 
-$(PREFIX1)main.o: $(PREFIX3)main.c
-	$(CC2) -c $(PREFIX3)main.c -o $(PREFIX2)main.o
+build/test/validation_test.o: test/validation_test.c   
+		$(CC) $(LFLAGS) test/validation_test.c -o $@
 
-$(PREFIX1)deposit.o: $(PREFIX3)deposit_test.c
-	$(CC1) -c $(PREFIX3)deposit_test.c -o $(PREFIX2)deposit_test.o
-
-$(PREFIX2)validation_test.o: $(PREFIX3)validation_test.c
-	$(CC1) -c $(PREFIX3)validation_test.c -o $(PREFIX2)validation_test.o
-
-#$(PREFIX1)deposit.o: $(PREFIX)deposit.c
-#	$(CC) -c $(PREFIX)deposit.c -o $(PREFIX1)deposit.o
+build/test/main.o: test/main.c 
+		$(CC) -I thirdparty -c test/main.c -o $@
 
 .PHONY: all clean
 
-clean:
-	rm -f build/src/*.o
-	rm -f build/test/*.o
+clean:	
+		rm -rf build/src/*.o
+		rm -rf build/test/*.o
+		rm -rf bin/*
